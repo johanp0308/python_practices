@@ -24,18 +24,20 @@ while i<limite:
     i+=1
     cont = 0
 
-# print(listaPri[:])
+print(listaPri[:])
 
-# i = 0
+i = 0
 
-# while i<len(listaPri):
-#     if(i != len(listaPri)):
-#         prime = listaPri[i+1]
-#     else:
-#         break
-#     segun = listaPri[i]
-#     if(prime-segun==2):
-#         print("({par1},{par2})".format(par1=listaPri[i],par2=listaPri[i+1]))
-#     i+=1
-
+try:
+    while i<len(listaPri):
+        if(i != len(listaPri)):
+            prime = listaPri[i+1]
+        else:
+            break
+        segun = listaPri[i]
+        if(prime-segun==2):
+            print("({par1},{par2})".format(par1=listaPri[i],par2=listaPri[i+1]))
+        i+=1
+except:
+    print("Termino el programa")
 
