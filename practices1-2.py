@@ -9,22 +9,16 @@ lisPali = []
 while i<limite:
     j=1
     while j<=i:
-        if(i%2 != 0):
-            if( i%j == 0):
-                cont+=1
-        elif(i==2):
-            listaPri.append(i)
-            break
+        if(i%j == 0):
+            cont+=1
         j+=1
     if(cont==2):
-        if(i%3 != 0 and i!=3):
-            listaPri.append(i)
-        elif(i==3):
-            listaPri.append(i)
+        listaPri.append(i)
     i+=1
     cont = 0
+    
 
-
+# print(listaPri[:])
 
 for i in range(0,len(listaPri)):
     num = listaPri[i]
@@ -34,7 +28,6 @@ for i in range(0,len(listaPri)):
     revr = str(revr)
     revr = list(revr)
     revr.reverse()
-    
     if(num == revr):
         lisPali.append(num)
 
