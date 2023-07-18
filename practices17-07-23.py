@@ -132,9 +132,10 @@ lista = nums.split(',')
 # lista = list(lista)
 # lista.remove(',')
 suma = 0
+cant = len(lista)
 for i in range(0,len(lista)):
     numero = int(lista[i])
     suma += numero
 
-promedio = suma / len(list)
+promedio = suma / cant
 print(f'Su promedio es de {promedio}')
