@@ -131,6 +131,32 @@
 
 fact = {}
 
+ejecucion = True
+while ejecucion:
+    print("""
+===========================
+    Sistema de Facturas
+1. Agregar Factura.
+2. Pagar Factura.
+3. Ver lo que eh pagado.
+4. Ver lo que debo.
+5. Salir.
+===========================     
+""")
+    opc = int(input("Ingrese Una Opcion Valida: "))
+    if(opc==1):
+        pass
+    elif(opc==2):
+        pass
+    elif(opc==3):
+        pass
+    elif(opc==4):
+        pass
+    elif(opc==5):
+        ejecucion=False
+    else:
+        print("Opcion Invalida")
+
 
 # 7. Escribir un programa que permita gestionar la 
 # base de datos de clientes de una empresa. Los 
