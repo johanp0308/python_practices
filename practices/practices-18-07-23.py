@@ -239,18 +239,18 @@ Cliente preferente: {"Si" if clienteCons["prefe"]=='Y' else "No"}
                 """)
     elif(opc==4):
         print("****** Lista de Cliente ******")
-        for Nif,Cli in empresa:
+        for Nif,Cli in empresa.items():
             print(f"""
 == Cliente {Nif} ==
 Nombre : {Cli["nombre"]}
 Direccion: {Cli["direccion"]}
 Telefono:  {Cli["telefono"]}
 correo: {Cli["correo"]}
-Cliente preferente: {"Si" if clienteCons["prefe"]=='Y' else "No"}
+Cliente preferente: {"Si" if Cli["prefe"]=='Y' else "No"}
 -------------------
                 """)
     elif(opc==5):
-        for nife,Clie in empresa:
+        for nife,Clie in empresa.items():
             if(Clie["prefe"]=='Y'):
                 print(f"""
 == Cliente {Nif} ==
