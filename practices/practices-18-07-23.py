@@ -52,7 +52,7 @@
 #     if(vege == key):
 #         kg = int(input("Enter to numbre of kilos to carry: "))
 #         print(f"El precio de {key} es de {vegetables[vege]*kg}")
-        
+
 # print("No existe ese vegetal en la base de datos")
 
 # 4. Escribir un programa que cree un diccionario vacío y 
@@ -69,7 +69,7 @@
 #     if(execute=="Y"):
 #         keyIn = input("Enter what type of user data it is: ")
 #         value = input(f"Enter the data of {keyIn}: ")
-        
+
 #         if keyIn in user_data:
 #             user_data[keyIn]=value
 #         else:
@@ -96,7 +96,7 @@
 #         keyIn = input("What is your article called? : ")
 #         value = input(f"What does this {keyIn} cost? : ")
 #         exist=True if "does not exist"!=trolley.get(keyIn,"does not exist") else False
-        
+
 #         if(exist):
 #             trolley[keyIn]=value
 #             print("This article has already been introduced")
@@ -129,34 +129,46 @@
 # operación el programa debe mostrar por pantalla la 
 # cantidad cobrada hasta el momento y la cantidad pendiente de cobro.
 
-fact = {}
-
-ejecucion = True
-while ejecucion:
-    print("""
-===========================
-    Sistema de Facturas
-1. Agregar Factura.
-2. Pagar Factura.
-3. Ver lo que eh pagado.
-4. Ver lo que debo.
-5. Salir.
-===========================     
-""")
-    opc = int(input("Ingrese Una Opcion Valida: "))
-    if(opc==1):
-        pass
-    elif(opc==2):
-        pass
-    elif(opc==3):
-        pass
-    elif(opc==4):
-        pass
-    elif(opc==5):
-        ejecucion=False
-    else:
-        print("Opcion Invalida")
-
+# fact = {}
+# ejecucion = True
+# pagado = 0
+# debe = 0
+# while ejecucion:
+#     print("""
+# ===========================
+#     Sistema de Facturas
+# 1. Agregar Factura.
+# 2. Pagar Factura.
+# 3. Ver lo que eh pagado.
+# 4. Ver lo que debo.
+# 5. Ver facturas.
+# 6. Salir.
+# ===========================     
+# """)
+#     opc = int(input("Ingrese Una Opcion Valida: "))
+#     if(opc==1):
+#         numRef = int(input("Ingrese el numero de referencia de la factura: "))
+#         valor = float(input("Ingrese el valor de la factura: "))
+#         fact[numRef]=valor
+#         debe += valor
+#     elif(opc==2):
+#         numRef = int(input("Ingrese el numero de referencia de la factura a pagar: "))
+#         if(numRef in fact):
+#             print(f"Su valor a pagar es de: {fact[numRef]}")
+#         debe -= fact[numRef]
+#         pagado += fact.pop(numRef)
+#     elif(opc==3):
+#         print(f"El valor que usted ah pagado es de: {pagado}")
+#     elif(opc==4):
+#         print(f"El valor que usted debe es de: {debe}")
+#     elif(opc==5):
+#         for key,value in fact:
+#             print(f"Ref:{key} valor:{value}")
+#     elif(opc==6):
+#         ejecucion=False
+#     else:
+#         print("Opcion Invalida")
+# print("Termino el programa")
 
 # 7. Escribir un programa que permita gestionar la 
 # base de datos de clientes de una empresa. Los 
@@ -180,3 +192,77 @@ while ejecucion:
 # clientes de la base datos con su NIF y nombre.
 # Mostrar la lista de clientes preferentes de la 
 # base de datos con su NIF y nombre.Terminar el programa.
+#·------------------------------------------------------------
+empresa = {}
+ejecucion = True
+
+while ejecucion:
+    print("""
+===========================
+    Sistema de Facturas
+1. Agregar Cliente.
+2. Elminar Cliente.
+3. Mostrar Cliente.
+4. Listar Clientes.
+5. Listar Clientes Preferentes.
+6. Salir.
+===========================     
+""")
+    opc = int(input("Ingrese Una Opcion Valida: "))
+    if(opc==1):
+        cliente = {}
+        nif = input("Ingrese el numero de NiF del Cliente: ")
+        cliente["nombre"] = input("Ingrese el Nombre del Cliente: ")
+        cliente["direccion"] = input("Escriba la direccion de residencia: ")
+        cliente["telefono"] = input("Digite el numero de telefono: ")
+        cliente["correo"] = input("Escriba el correo del cliente: ")
+        cliente["prefe"] =True if (input("El cliente es preferente: y/n: ").upper()) == 'Y' else False
+        empresa[nif]=cliente
+        
+    elif(opc==2):
+        nif = input("Ingrese el nif del cliente al eliminar: ")
+        eliminado = empresa.pop(nif,"No enconcontrado")
+        if(eliminado!="No encontrado"):
+            print("Cliente eliminado")
+    elif(opc==3):
+        nif = input("Ingrese el nif del cliente a mostrar: ")
+        clienteCons = empresa.get(nif,"Cliente no encontrado")
+        if(clienteCons != "Cliente no encontrado"):
+            print(f"""
+==== Datos Cliente ====
+Nombre : {clienteCons["nombre"]}
+Direccion: {clienteCons["direccion"]}
+Telefono:  {clienteCons["telefono"]}
+correo: {clienteCons["correo"]}
+Cliente preferente: {"Si" if clienteCons["prefe"]=='Y' else "No"}
+=======================
+                """)
+    elif(opc==4):
+        print("****** Lista de Cliente ******")
+        for Nif,Cli in empresa:
+            print(f"""
+== Cliente {Nif} ==
+Nombre : {Cli["nombre"]}
+Direccion: {Cli["direccion"]}
+Telefono:  {Cli["telefono"]}
+correo: {Cli["correo"]}
+Cliente preferente: {"Si" if clienteCons["prefe"]=='Y' else "No"}
+-------------------
+                """)
+    elif(opc==5):
+        for nife,Clie in empresa:
+            if(Clie["prefe"]=='Y'):
+                print(f"""
+== Cliente {Nif} ==
+Nombre : {Cli["nombre"]}
+Direccion: {Cli["direccion"]}
+Telefono:  {Cli["telefono"]}
+correo: {Cli["correo"]}
+Cliente preferente: {"Si" if clienteCons["prefe"]=='Y' else "No"}
+-------------------
+                """)
+    elif(opc==6):
+        ejecucion=False
+    else:
+        print("Opcion Invalida")
+print("Termino el programa")
