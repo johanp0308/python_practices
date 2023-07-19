@@ -3,11 +3,32 @@
 # una divisa y muestre su símbolo o un mensaje de aviso si la 
 # divisa no está en el diccionario.
 
+# currency = {"Euro":'€',"Dollar":'$',"Yen":'¥'}
+# badge = input("Enter a Currency: ")
+
+# if('No encontrado'==currency.get(badge,'No encontrado')):
+#     print("No encontrado :C")
+# else:
+#     print(currency[badge])
+
 # 2. Escribir un programa que pregunte al usuario su nombre, 
 # edad, dirección y teléfono y lo guarde en un diccionario. 
 # Después debe mostrar por pantalla el mensaje <nombre> tiene 
 # <edad> años, vive en <dirección> y su número de teléfono 
 # es <teléfono>.
+
+# user_data = {
+#     "name":"",
+#     "age":0,
+#     "address":"",
+#     "telephone":0
+# }
+
+# for keys in user_data.keys():
+#     dato = input(f"Enter you {keys}: ")
+#     user_data[keys]=dato
+
+# print(user_data)
 
 # 3. Escribir un programa que guarde en un diccionario los 
 # precios de las verduras de la tabla, pregunte al usuario por 
@@ -15,11 +36,24 @@
 # precio a pagar. Si la fruta no está en el diccionario debe 
 # mostrar un mensaje informando de ello.
 
-
 # Verdura               Precio (Kg)
 # Brócoli                2500 COP
-# Pimentón           1250 COP
+# Pimentón               1250 COP
 # Arveja                 3500 COP
+
+# vegetables = {
+#     "Brocoli": 2500,
+#     "Pimenton": 1250,
+#     "Arveja": 3500
+# }
+
+# vege = input("Enter you vegetable: ")
+# for key in vegetables.keys():
+#     if(vege == key):
+#         kg = int(input("Enter to numbre of kilos to carry: "))
+#         print(f"El precio de {key} es de {vegetables[vege]*kg}")
+        
+# print("No existe ese vegetal en la base de datos")
 
 # 4. Escribir un programa que cree un diccionario vacío y 
 # lo vaya llenado con información sobre una persona (por 
@@ -28,12 +62,58 @@
 # vez que se añada un nuevo dato debe imprimirse el 
 # contenido del diccionario.
 
-# 5. Escribir un programa que cree un diccionario 
-# simulando una cesta de la compra. El programa debe 
+# user_data = {}
+# execution = True
+# while execution:
+#     execute = (input("Do you want to enter a user data? y/n: ")).upper()
+#     if(execute=="Y"):
+#         keyIn = input("Enter what type of user data it is: ")
+#         value = input(f"Enter the data of {keyIn}: ")
+        
+#         if keyIn in user_data:
+#             user_data[keyIn]=value
+#         else:
+#             user_data[keyIn]=value
+#             print(user_data)
+#     elif(execute=="N"):
+#         execution=False
+#     else:
+#         print("Wrong Option")
+
+# 5. Escribir un programa que cree un diccionario simulando una cesta de la compra. El programa debe 
 # preguntar el artículo y su precio y añadir el par 
 # al diccionario, hasta que el usuario decida terminar. 
 # Después se debe mostrar por pantalla la lista de la 
 # compra y el coste total
+
+# trolley = {}
+# execution = True
+# total = 0
+# while execution:
+#     exist = False
+#     execute = (input("Do you want to buy something? y/n: ")).upper()
+#     if(execute=="Y"):
+#         keyIn = input("What is your article called? : ")
+#         value = input(f"What does this {keyIn} cost? : ")
+#         exist=True if "does not exist"!=trolley.get(keyIn,"does not exist") else False
+        
+#         if(exist):
+#             trolley[keyIn]=value
+#             print("This article has already been introduced")
+#         else:
+#             trolley[keyIn]=value
+#     elif(execute=="N"):
+#         for value in trolley.values():
+#             total += int(value)
+#         execution=False
+#     else:
+#         print("Wrong Option")
+
+# print("===== Total =====")
+# for key, value in trolley.items():
+#     print(f"{key} ==> {value}")
+
+# print(f"His total is : {total}")
 
 # 6. Escribir un programa que gestione las facturas 
 # pendientes de cobro de una empresa. Las facturas 
@@ -48,6 +128,9 @@
 # y se eliminará del diccionario. Después de cada 
 # operación el programa debe mostrar por pantalla la 
 # cantidad cobrada hasta el momento y la cantidad pendiente de cobro.
+
+fact = {}
+
 
 # 7. Escribir un programa que permita gestionar la 
 # base de datos de clientes de una empresa. Los 
