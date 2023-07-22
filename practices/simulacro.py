@@ -88,7 +88,15 @@ def opciones_menu(opcion=0):
                 newDic[key] = []
         for dep,emprs in newDic.items():
             for empr,listadep in Empresas.items():
-                pass
+                for depDic in listadep:
+                    depar = depDic["departamento"]
+                    if(depar == dep):
+                        aggEmpr = {
+                            "Empresa" : empr,
+                            "empleados": depDic["empleados"]
+                        }
+                        emprs.append(aggEmpr)
+        print(newDic)
 
 def main():
     ejecucion = True
