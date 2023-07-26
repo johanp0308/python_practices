@@ -23,16 +23,46 @@
 
 from funciones import menu_text, operation_options
 
-
-
-
-Agendas = {}
-
+Agendas = [
+    {
+        "identi": 5646,
+        "name": "SOL",
+        "location": "ZAPATOCA",
+        "date_month": 15,
+        "participants": [],
+        "finished": False
+    },
+    {
+        "identi": 45,
+        "name": "HOLA",
+        "location": "TUNJA",
+        "date_month": 23,
+        "participants": 
+                    [
+                        {
+                            "document": 100546,
+                            "name":"Johan",
+                            "age": 21,
+                            "position":"Jefe",
+                            "contribution": False
+                        },
+                        {
+                            "document": 100546,
+                            "name":"Johan",
+                            "age": 21,
+                            "position":"Jefe",
+                            "contribution": False
+                        }
+                    ],
+        "finished": True
+    }
+]
 
 while True:
     try:
         menu_text()
         opc = int(input("Ingresa una opcion: "))
         operation_options(opc,Agendas)
+        
     except ValueError:
         print("Error valor no numerico")
