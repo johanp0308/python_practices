@@ -10,15 +10,24 @@ def add_participants(dictionary,evt):
             agePart = input("Enter the age of the Participant: ")
             positPar = input("Enter the position of the Participant: ")
             payPart = input("Has the user already paid for his ticket? y/n").lower()
-            
+            if(payPart=='y'):
+                pay = True
+            elif(payPart=='n'):
+                pay = False
+            else:
+                print("Error estableciendo booleano")
+                
             value["participants"].append({
                 "document": idPart,
                 "name":namePar,
                 "age":agePart,
-                "position":positPar
-                ""
+                "position":positPar,
+                "contribution":pay
             })
-        
+            
+            print(value["participants"])
+        else:
+            print("this event does not exist")
 
 def create_event(dictionary):
     nameEvt = input("Enter the name of the Event: ")
@@ -35,7 +44,10 @@ def create_event(dictionary):
 def operation_options(opc,dic):
     if(opc==1):
         create_event(dic)
-
+    if(opc==2):
+        evento = input("Enter the event to add the participant: ")
+        add_participants(dic,evento)
+        
 def menu_text():
     print("""
 ╔═════ °❀•°✮°•❀°═════╗
