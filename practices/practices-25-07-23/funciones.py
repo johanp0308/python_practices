@@ -1,22 +1,35 @@
 import validaciones
-from random import Random
+import random
 
 
-def delet_evt(lista,evt):
-    if(validaciones.event_exists(lista,evt)  and not validaciones.verif_evt_finished(lista,evt) ):
+def delet_evt(lista,evt,iden):
+    if(validaciones.event_exists(lista,evt,iden)  and not validaciones.verif_evt_finished(lista,evt) ):
         for eleme in lista:
-            if(eleme["name"] == evt):
+            if(eleme["name"] == evt and eleme['identi']==iden):
                 lista.remove(eleme)
+                break
+        else:
+            print("Participant not found")
+    else:
+        print("Event not found or Finished")      
 
-def modif_evt(lista,evt):
-    if(validaciones.event_exists(lista,evt) and not validaciones.verif_evt_finished(lista,evt)):
+def modif_evt(lista,evt,iden):
+    if(validaciones.event_exists(lista,evt,iden) and not validaciones.verif_evt_finished(lista,iden)):
         for eleme in lista:
             if(eleme["name"] == evt):
-                print("Modify \n-name-\nlocation. \ndate_month. \nExit.")
-                opc_modf = input("Enter what you want to modify")
-                modif = input("Ingrese la valor de la modificacion")
-                if(opc_modf != 'participants'):
-                    eleme[opc_modf]=modif
+                print("Modify \n-name\n-location. \n-date_month. \n-Exit.")
+                opc_modf = input("Enter what you want to modify: ")
+                modif = input("Enter the value of the modification: ")
+                if(opc_modf != 'participants' and opc_modf != 'identi'):
+                    if(validaciones.verif_attri_exist(lista,opc_modf)):
+                        eleme[opc_modf]=modif
+                    else:
+                        print("that attribute does not exist")
+                else:
+                    print("Ese elemento no se puede modificar directamente")
+    else:
+        print("Event not found or Finished")
+    print(lista)                 
 
 def deleted_partc_evet(dictionary,evt):
     if(validaciones.event_exists(dictionary,evt)):
@@ -35,12 +48,11 @@ def deleted_partc_evet(dictionary,evt):
                     print("participant does not exist")
 
 
-def add_participants(dictionary,evt):
+def add_participants(lista,evt):
     
-    if(validaciones.event_exists(dictionary,evt)):
-        # print(evt)
-        for keyDic,value in dictionary.items():
-            if(keyDic == evt):
+    if(validaciones.event_exists(lista,evt)):
+        for dicEvt in lista:
+            if(dicEvt['name'] == evt):
                 idPart = int(input("Enter the id of theParticipant: "))
                 if(validaciones.partc_exists(value['participants'])):
                     namePar = input("Enter the name of theParticipant: ")
@@ -67,14 +79,14 @@ def add_participants(dictionary,evt):
         print(dictionary[evt])
     else:
         print("The event not exists.")
-def create_event(dictionary):
+def create_event(lista):
     nameEvt = input("Enter the name of the Event: ")
-    if(not validaciones.event_exists(dictionary,nameEvt)):
+    if(not validaciones.event_exists(lista,nameEvt)):
         locationEvt = input("Enter the location of the Event: ")
         date_month = input("Enter the date of the Event: ")
         
-        dictionary.append({
-            "identi": Random.randint(100,999),
+        lista.append({
+            "identi": random.randint(100,999),
             "name": nameEvt,
             "location": locationEvt,
             "date_month": date_month,
@@ -82,7 +94,7 @@ def create_event(dictionary):
             "finished": False
         })
 
-        print(dictionary)
+        print(lista)
     else:
         print("El evento ya existe")
         
@@ -90,22 +102,38 @@ def operation_options(opc,lista):
     if(opc==1):
         create_event(lista)
     elif(opc==2):
+        idEvt = int(input("Enter the id of the event to add Participants "))
         evento = input("Enter the event to add the participant: ")
         add_participants(lista,evento)
     elif(opc==3):
         evento = input("Enter the event to add the participant: ")
         deleted_partc_evet(lista)
+    elif(opc==4):
+        ident = int(input("Enter the id of the event to delete"))
+        event = input("Enter the name of the event to delete")
+        delet_evt(lista,event,ident)
+    elif(opc == 5):
+        ident = int(input("Enter the id of the event to delete"))
+        event = input("Enter the name event please: ")
+        modif_evt(lista,event,ident)
+    elif(opc == 6):
+        event = input("Enter the name event please: ")
+    elif(opc == 7):
+        return False
+    
+    return True
+        
 
 def operation_options_evt(opc,lista):
     if(opc == 1):
-        event = input("Enter the name event please: ")
-        modif_evt(opc,lista)
+        pass
     elif(opc == 2):
         event = input("Enter the name event please: ")
         
     elif(opc == 3):
         event = input("Enter the name event please: ")
 
+    
 
 def menu_text():
     print("""
@@ -123,13 +151,5 @@ def menu_text():
         """)
 
 def menu_evt():
-    print("""
-    ╔═════ °❀•°✮°•❀°═════╗
-        Menu Eventos.
-    1. Modificar Evento.
-    2. Eliminar Evento.
-    3. Marcar Evento Realizado.
-    4. 
-    
-    """)
+    pass
 

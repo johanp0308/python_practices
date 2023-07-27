@@ -21,6 +21,7 @@
 #   Se deben manejar la excepciones
 
 
+
 from funciones import menu_text, operation_options
 
 Agendas = [
@@ -57,12 +58,12 @@ Agendas = [
         "finished": True
     }
 ]
-
-while True:
+ejecucion = True
+while ejecucion:
     try:
         menu_text()
         opc = int(input("Ingresa una opcion: "))
-        operation_options(opc,Agendas)
+        ejecucion = operation_options(opc,Agendas)
         
     except ValueError:
         print("Error valor no numerico")

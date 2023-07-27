@@ -1,26 +1,32 @@
-def event_exists(dic,evt):
-  if(evt in dic):
-    return True
-  else:
-    return False
+def event_exists(list,evt,iden=0):
+  for elem in list:
+    if(elem['identi']==iden or elem['name']==evt):
+      print("Returna True")
+      return True
+  return False
+      
 
 def partc_exists(lista,idpart):
   for dicio in lista:
     if(dicio["document"] == idpart):
       return True
-    else:
-      return False
+  return False
 
 def partc_pay(lista,idPart):
   for dicio in lista:
     if(dicio['contribution'] == True):
       return True
-    else:
-      return False
+  return False
 
-def verif_evt_finished(list,evt):
+def verif_evt_finished(list,ident):
   for elem in list:
-    if(elem['name']==evt):
-      if(elem['finished'] == evt):
+    if(elem['identi']==ident):
+      if(elem['finished'] == True):
         return True
+  return False
+
+def verif_attri_exist(lista,att):
+  for ele in lista:
+    if(att in ele):
+      return True
   return False
