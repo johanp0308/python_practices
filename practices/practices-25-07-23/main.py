@@ -18,7 +18,7 @@
 #   La estructura a utilizar es libre, solo se pide que sea ordenada y coherente. 
 #   Todo debe ser dentro de un menú que se repite para no perder la información y al presionar 
 #   la opción de salida se debe pedir confirmación de la misma. 
-#   Se deben manejar la excepciones
+#   Se deben manejar la excepcioness.
 
 
 
@@ -48,9 +48,9 @@ Agendas = [
                             "contribution": False
                         },
                         {
-                            "document": 100546,
-                            "name":"Johan",
-                            "age": 21,
+                            "document": 7998,
+                            "name":"Pachon",
+                            "age": 45,
                             "position":"Jefe",
                             "contribution": False
                         }
@@ -58,6 +58,7 @@ Agendas = [
         "finished": True
     }
 ]
+
 ejecucion = True
 while ejecucion:
     try:

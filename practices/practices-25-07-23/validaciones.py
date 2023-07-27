@@ -1,7 +1,6 @@
 def event_exists(list,evt,iden=0):
   for elem in list:
     if(elem['identi']==iden or elem['name']==evt):
-      print("Returna True")
       return True
   return False
       

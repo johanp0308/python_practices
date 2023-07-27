@@ -1,4 +1,5 @@
 import validaciones
+import impresiones
 import random
 
 
@@ -31,16 +32,16 @@ def modif_evt(lista,evt,iden):
         print("Event not found or Finished")
     print(lista)                 
 
-def deleted_partc_evet(dictionary,evt):
-    if(validaciones.event_exists(dictionary,evt)):
-        for keyDic,value in dictionary.items():
-            if(keyDic == evt):
+def deleted_partc_evet(lista,evt,iden):
+    if(validaciones.event_exists(lista,evt,iden)):
+        for dicel in lista:
+            if(dicel['identi'] == iden and dicel['name']==evt):
                 idPart = int(input("Enter the id of theParticipant: "))
-                if(validaciones.partc_exists(value['participants'])):
-                    for elemento in value['participants']:
+                if(validaciones.partc_exists(dicel['participants'],idPart)):
+                    for elemento in dicel['participants']:
                         if(elemento['document']==idPart):
-                            value['participants'].remove(elemento)
-                            print(value['participants'])
+                            dicel['participants'].remove(elemento)
+                            print(dicel['participants'])
                             break
                     else:
                         print("you finished deleting")
@@ -48,13 +49,14 @@ def deleted_partc_evet(dictionary,evt):
                     print("participant does not exist")
 
 
-def add_participants(lista,evt):
+def add_participants(lista,evt,iden):
     
-    if(validaciones.event_exists(lista,evt)):
+    if(validaciones.event_exists(lista,evt,iden)):
         for dicEvt in lista:
-            if(dicEvt['name'] == evt):
+            print(dicEvt['finished'])
+            if(dicEvt['identi']==iden and dicEvt['finished']!=True):
                 idPart = int(input("Enter the id of theParticipant: "))
-                if(validaciones.partc_exists(value['participants'])):
+                if(not validaciones.partc_exists(dicEvt['participants'],idPart)):
                     namePar = input("Enter the name of theParticipant: ")
                     agePart = input("Enter the age of the Participant: ")
                     positPar = input("Enter the position of the Participant: ")
@@ -65,7 +67,7 @@ def add_participants(lista,evt):
                         pay = False
                     else:
                         print("Error estableciendo booleano")
-                    value["participants"].append({
+                    dicEvt["participants"].append({
                         "document": idPart,
                         "name":namePar,
                         "age":agePart,
@@ -73,10 +75,9 @@ def add_participants(lista,evt):
                         "contribution":pay
                     })
                     
-                    print(value["participants"])
+                    print(dicEvt["participants"])
             else:
-                print("this event does not exist")
-        print(dictionary[evt])
+                print("this event does not exist or event finished")
     else:
         print("The event not exists.")
 def create_event(lista):
@@ -102,23 +103,32 @@ def operation_options(opc,lista):
     if(opc==1):
         create_event(lista)
     elif(opc==2):
-        idEvt = int(input("Enter the id of the event to add Participants "))
+        idEvt = int(input("Enter the id of the event to add Participants: "))
         evento = input("Enter the event to add the participant: ")
-        add_participants(lista,evento)
+        add_participants(lista,evento,idEvt)
     elif(opc==3):
-        evento = input("Enter the event to add the participant: ")
-        deleted_partc_evet(lista)
+        evento = input("Enter the event to deleted the participant: ")
+        ident = int(input("Enter the id of the particpant to deleted: "))
+        deleted_partc_evet(lista,evento,ident)
     elif(opc==4):
-        ident = int(input("Enter the id of the event to delete"))
-        event = input("Enter the name of the event to delete")
+        ident = int(input("Enter the id of the event to delete: "))
+        event = input("Enter the name of the event to delete: ")
         delet_evt(lista,event,ident)
     elif(opc == 5):
-        ident = int(input("Enter the id of the event to delete"))
+        ident = int(input("Enter the id of the event to modify: "))
         event = input("Enter the name event please: ")
         modif_evt(lista,event,ident)
     elif(opc == 6):
-        event = input("Enter the name event please: ")
+        ident = int(input("Enter the id of the event to Consult: "))
+        impresiones.imprimi_evt(lista,ident)
     elif(opc == 7):
+        ident = int(input("Enter the id of the participant to Consult: "))
+        event = int(input("Enter the id of the event to consult"))
+        impresiones.imprimi_part(lista,event,ident)
+    elif(opc == 8):
+        idEvt = int(input("Enter the id of the event to consult: "))
+        impresiones.imp_evt_part(lista,idEvt)
+    elif(opc == 11):
         return False
     
     return True
@@ -139,13 +149,17 @@ def menu_text():
     print("""
 ╔═════ °❀•°✮°•❀°═════╗
     𝕄enu 𝔸genda
-1.Crear Evento.
-2.Añadir Empleado-Participante.
-3.Quitar Participante.
-4.Eliminar Evento.
-5.Editar Evento.
-6.Ver Eventos.
-7.Salir
+1.  Crear Evento.
+2.  Añadir Empleado-Participante.
+3.  Quitar Participante.
+4.  Eliminar Evento.
+5.  Editar Evento.
+6.  Ver Informacion Evento.
+7.  Ver Informacion Participante.
+8.  Ver Participantes del Evento.
+9.  Ver deuda del evento
+10. Lista de particiapante que no Han pagado
+11. Salir
 
 ╚═════ °❀•°✮°•❀°═════╝       
         """)
