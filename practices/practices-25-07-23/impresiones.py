@@ -12,7 +12,25 @@ def imprimi_part(lista,idEv,idPAr):
           print(f"Participant: {dicPar['document']} | Name: {dicPar['name']} | Age: {dicPar['age']} | Position: {dicPar['position']} | Contribution: {True if dicPar['contribution']==True else False}")
 
 def imp_evt_part(lista,idEv):
+  print("◈ ━━━━ ◈ Participants ◈ ━━━━ ◈")
   for dicD in lista:
     if(dicD['identi']==idEv):
       for dicPar in dicD['participants']:
         print(f"Participant: {dicPar['document']} | Name: {dicPar['name']} | Age: {dicPar['age']} | Position: {dicPar['position']} | Contribution: {True if dicPar['contribution']==True else False}")
+  print("◈ ━━━━━━━━━━━━━━━━━━━━━━━━━━ ◈")
+
+def impr_evts(lista):
+  print("◈ ━━━━ ◈ Participants ◈ ━━━━ ◈")
+  for dicD in lista:
+    for dicPar in dicD['participants']:
+      print(f"Participant: {dicPar['document']} | Name: {dicPar['name']} | Age: {dicPar['age']} | Position: {dicPar['position']} | Contribution: {True if dicPar['contribution']==True else False}")
+  print("◈ ━━━━━━━━━━━━━━━━━━━━━━━━━━ ◈")
+
+def impr_part_noPay(lista):
+  print("◈ ━━━━ ◈ Participants ◈ ━━━━ ◈")
+  for dicEle in lista:
+    if(dicEle['contribution'] == True):
+      print(f"Id: {dicPar['document']} | Name: {dicPar['name']} | Age: {dicPar['age']} | Position: {dicPar['position']} | Contribution: {True if dicPar['contribution']==True else False}")
+  print("◈ ━━━━━━━━━━━━━━━━━━━━━━━━━━ ◈")
+
+

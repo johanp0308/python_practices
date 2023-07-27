@@ -2,6 +2,18 @@ import validaciones
 import impresiones
 import random
 
+def mark_evt(lista,idEvt):
+    pass
+def deuda_evt(lista,idEvt):
+    deuda = 0
+    for dicEle in lista:
+        if(dicEle['identi'] == idEvt):
+            for elemento in dicEle['participants']:
+                if(elemento['contribution']== True):
+                    deuda += 50000
+    print("╔════════════════════════════╗")
+    print(f"  La deuda es de: {deuda}")
+    print("╚════════════════════════════╝")
 
 def delet_evt(lista,evt,iden):
     if(validaciones.event_exists(lista,evt,iden)  and not validaciones.verif_evt_finished(lista,evt) ):
@@ -39,7 +51,7 @@ def deleted_partc_evet(lista,evt,iden):
                 idPart = int(input("Enter the id of theParticipant: "))
                 if(validaciones.partc_exists(dicel['participants'],idPart)):
                     for elemento in dicel['participants']:
-                        if(elemento['document']==idPart):
+                        if(elemento['document']==idPart and elemento['contribution']!=True):
                             dicel['participants'].remove(elemento)
                             print(dicel['participants'])
                             break
@@ -47,7 +59,6 @@ def deleted_partc_evet(lista,evt,iden):
                         print("you finished deleting")
                 else:
                     print("participant does not exist")
-
 
 def add_participants(lista,evt,iden):
     
@@ -74,10 +85,10 @@ def add_participants(lista,evt,iden):
                         "position":positPar,
                         "contribution":pay
                     })
-                    
                     print(dicEvt["participants"])
-            else:
-                print("this event does not exist or event finished")
+                    break
+        else:
+            print("this event does not exist or event finished")
     else:
         print("The event not exists.")
 def create_event(lista):
@@ -95,7 +106,7 @@ def create_event(lista):
             "finished": False
         })
 
-        print(lista)
+        impresiones.impr_evts(lista)
     else:
         print("El evento ya existe")
         
@@ -115,6 +126,7 @@ def operation_options(opc,lista):
         event = input("Enter the name of the event to delete: ")
         delet_evt(lista,event,ident)
     elif(opc == 5):
+        impr_evts(lista)
         ident = int(input("Enter the id of the event to modify: "))
         event = input("Enter the name event please: ")
         modif_evt(lista,event,ident)
@@ -128,42 +140,46 @@ def operation_options(opc,lista):
     elif(opc == 8):
         idEvt = int(input("Enter the id of the event to consult: "))
         impresiones.imp_evt_part(lista,idEvt)
+    elif(opc == 9):
+        idEvt = int(input("Enter the id of the event to consult: "))
+        deuda_evt(lista,idEvt)
+    elif(opc == 10):
+        idEvt = int(input("Enter the id of the event to consult: "))
+        impresiones.impr_part_noPay(lista,idEvt)
     elif(opc == 11):
-        return False
+        pass
+    elif(opc == 12):
+        inte = input("Are you sure you want to go out? y/n: ").lower()
+        aser = True if inte == "y" else False
+        if(aser):
+            return False
+        elif(aser==False):
+            print("He has not escaped execution")
+        else:
+            print(f"\033[1;30;41mThe error has occurred\033[0m")
     
     return True
-        
 
-def operation_options_evt(opc,lista):
-    if(opc == 1):
-        pass
-    elif(opc == 2):
-        event = input("Enter the name event please: ")
-        
-    elif(opc == 3):
-        event = input("Enter the name event please: ")
 
-    
 
 def menu_text():
-    print("""
+    print(f"""\033[3;30;41m
 ╔═════ °❀•°✮°•❀°═════╗
-    𝕄enu 𝔸genda
-1.  Crear Evento.
-2.  Añadir Empleado-Participante.
-3.  Quitar Participante.
-4.  Eliminar Evento.
-5.  Editar Evento.
-6.  Ver Informacion Evento.
-7.  Ver Informacion Participante.
-8.  Ver Participantes del Evento.
-9.  Ver deuda del evento
-10. Lista de particiapante que no Han pagado
-11. Salir
+        𝕄enu 𝔸genda
+1.  Create Event.
+2.  Add Employee-Participant.
+3.  Remove Participant.
+4.  Delete Event.
+5.  Edit Event.
+6.  View Event Information.
+7.  View Participant Information.
+8.  View Event Participants.
+9.  View event debt
+10. List of participants who have not paid
+11. Mark Event as Finished.
+12. Exit
 
 ╚═════ °❀•°✮°•❀°═════╝       
-        """)
+        \033[0m""")
 
-def menu_evt():
-    pass
 
