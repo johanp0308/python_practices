@@ -9,23 +9,26 @@ def create_data(parti):
     data =  open("data.txt","w",encoding="utf-8")
     
     for key,value in parti.items():
-        data.write(f"{key}-{value['name']}-{value['age']}-{value['area']}-{value['is paid']} \n")
+        data.write(f"{key}-{value['name']}-{value['age']}-{value['area']}-{value['is paid']}[")
     data.close()
 
 def restruc_data():
     data = open("data.txt","r",encoding="utf-8")
     newDic = {}
-    for i in range(3):
-        dic = data.readline()
-        dic = dic.split("-")
-        newDic[int(dic[0])]={
-            'name':dic[1],
-            'age':dic[2],
-            'area':dic[3],
-            'is paid':bool(dic[4])
+    dic = data.readline()
+    dic = dic.split("[")
+    dic.remove("")
+    for ele in dic:
+        resr = ele.split("-")
+        print(resr[0])
+        newDic[int(resr[0])]={
+            "name":resr[1],
+            "age":resr[2],
+            "area":resr[3],
+            "is pad":resr[4]
         }
     data.close()
     return newDic
 
 create_data(participantes)
-print(type(restruc_data()))
+print(restruc_data())
