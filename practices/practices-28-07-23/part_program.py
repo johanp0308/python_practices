@@ -2,20 +2,20 @@ import prints
 import valid_part
 
 particpantes = {
-    "123412":{"name": "Hola","age": 23,"residence":"santander","program": "Atletismo"},
-    "1234123":{"name": "Hola","age": 23,"residence":"santander","program": "Atletismo"},
-    "1234456":{"name": "Hola","age": 23,"residence":"santander","program": "Atletismo"},
-    "1235648":{"name": "Hola","age": 23,"residence":"santander","program": "Atletismo"}
+    "123412":{"name": "Hola","age": 23,"residence":"santander","program": "atletismo"},
+    "1234123":{"name": "ell","age": 23,"residence":"santander","program": "patinaje"},
+    "1234456":{"name": "Hasda","age": 23,"residence":"santander","program": "patinaje"},
+    "1235648":{"name": "Hori","age": 23,"residence":"santander","program": "ciclismo"}
 }
 
 
 def opc_pro(opci):
     if(opci==1):
-        return "Atletismo"
+        return "atletismo"
     elif(opci==2):
-        return "Ciclismo"
+        return "ciclismo"
     elif(opci==3):
-        return "Patinaje"
+        return "patinaje"
     return "None"
 
 def create():

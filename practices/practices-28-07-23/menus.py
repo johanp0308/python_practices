@@ -27,20 +27,22 @@ def opc_progr(opc):
             if(opc==4):
                 return False
             id = input("Enter the participant's document: ")
-            if(valid_part.part_exists(id)):
+            if(valid_part.part_exists(id,part_program.particpantes)):
                 posicion = int(input("Enter the participant's ranking in numbers: "))
-                if(opc== 1):
+                if(opc== 1 and part_program.particpantes[id]['program']=='atletismo'):
                     ranking.agregar_ranking("atletismo",id,posicion)
                     break
-                elif(opc==2):
+                elif(opc==2 and part_program.particpantes[id]['program']=='ciclismo'):
                     ranking.agregar_ranking("ciclismo",id,posicion)
                     break
-                elif(opc==3):
+                elif(opc==3 and part_program.particpantes[id]['program']=='patinaje'):
                     ranking.agregar_ranking("patinaje",id,posicion)
                     break
+                else:
+                    print("Sorry the participant does not belong to that category")
             else:
                 print("Sorry no participant found")
-        except Exception:
+        except ValueError:
             print("Error! Enter a non-numeric value")
     return True
         
@@ -57,10 +59,10 @@ def menu_ranked():
     4. Cancel.
 
             """)
-            opc = int(input("Enter any option"))
+            opc = int(input("Enter any option: "))
             print("    •—————————•°•✿•°•—————————•")
             exec = opc_progr(opc)
-        except:
+        except :
             print("Error Non-numeric value")
 
 # Manejador de opciones de Participantes
@@ -74,7 +76,6 @@ def part_maneja(opc):
 
 # Manejador de opciones prinicipal
 def manejador(opcion):
-
     if(opcion==1):
         menu_participantes()
     elif(opcion==2):
@@ -102,3 +103,4 @@ def main_menu():
             ejecucion = manejador(opc)
         except ValueError:
             print("Error! Enter a non-numeric value")
+

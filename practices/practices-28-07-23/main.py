@@ -2,7 +2,7 @@
 # La gobernación de Santander están organizando un evento deportivo en el cual se estarán organizando tres carreras:
 #       atletismo
 #       ciclismo
-#       patinaje3
+#       patinaje
 # Para esta organización la gobernación comenzó a recolectar la información de los participantes en planillas manualmente, sin 
 # esperar que habría demasiada gente interesada y la cantidad de personas inscritas fue poco manejable. La gobernación requiere 
 # un programa simple hecho en Python que le permita recolectar la información de los participantes con los siguientes requerimientos.
