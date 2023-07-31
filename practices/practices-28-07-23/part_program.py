@@ -81,5 +81,5 @@ def eliminar():
             
 def see_all():
     print("        •—————————•°•✿•°•—————————•")    
-    for id,info in particpantes:
+    for id,info in particpantes.items():
         prints.print_part(id,info)
