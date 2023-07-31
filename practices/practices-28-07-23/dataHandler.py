@@ -1,25 +1,44 @@
 from ranking import ranking
 
+
 rank = ranking
 
-def cargar(file_name):
+def descargar(file_name):
     if validate_file(file_name):       
+        newDic = {}
         archivo = open(file_name, "r")
-        lista = archivo.readlines()    
+        lista = archivo.readlines()
+        for line in lista:
+            line = line.split("|")
+            info = line[1].split("-")
+            info.remove('\n')
+            
+
+            print(line[0])
+            for ele in info:
+                ele = ele.split(":")
+                print(newDic.get(line[0],True))
+                if(newDic.get(line[0],True)==True):
+                    newDic[line[0]]={int(ele[0]):ele[1]}
+                else:
+                    newDic[line[0]][int(ele[0])]=ele[1]
+                # ele.remove("\n")
+                    
+
         archivo.close()
-        part = {}
         
-        return part
+        return newDic
     else:
         return {}
 
-def guardar(file_name):
+def cargar(file_name):
     if validate_file(file_name):            
         archivo = open(file_name, "w")
-        for prog,ranked in rank:
-          archivo.write(f"{prog}|")
-          for pos,id in ranked.items():
-            archivo.write(":".join([pos,id]))
+        for prog,ranked in rank.items():
+            archivo.write(f"{prog}|")
+            for pos,ide in ranked.items():
+                archivo.write(f"{pos}:{ide}-")
+            archivo.write("\n")
         archivo.close()
         
 

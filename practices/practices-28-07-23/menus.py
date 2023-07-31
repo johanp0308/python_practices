@@ -1,6 +1,7 @@
 import part_program
 import ranking
 import valid_part
+import dataHandler
 
 def menu_participantes():
     exePart = True
