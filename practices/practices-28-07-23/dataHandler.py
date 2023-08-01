@@ -1,6 +1,5 @@
 from ranking import ranking
 
-
 rank = ranking
 
 def descargar(file_name):
@@ -12,24 +11,21 @@ def descargar(file_name):
             line = line.split("|")
             info = line[1].split("-")
             info.remove('\n')
-            
-
-            print(line[0])
             for ele in info:
                 ele = ele.split(":")
-                print(newDic.get(line[0],True))
                 if(newDic.get(line[0],True)==True):
                     newDic[line[0]]={int(ele[0]):ele[1]}
                 else:
                     newDic[line[0]][int(ele[0])]=ele[1]
                 # ele.remove("\n")
-                    
-
         archivo.close()
         
         return newDic
     else:
         return {}
+
+# KEy => Value
+
 
 def cargar(file_name):
     if validate_file(file_name):            
@@ -40,7 +36,6 @@ def cargar(file_name):
                 archivo.write(f"{pos}:{ide}-")
             archivo.write("\n")
         archivo.close()
-        
 
 def validate_file(file_name):
     response = False
@@ -53,3 +48,6 @@ def validate_file(file_name):
     except Exception:
         print("Error al manejar el archivo")
     return response 
+
+
+

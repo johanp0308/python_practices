@@ -48,6 +48,7 @@ def opc_progr(opc):
     return True
         
 def menu_ranked():
+    ranking.ranking = dataHandler.descargar("ranking.txt")
     exec = True
     while exec:
         try:
@@ -84,6 +85,7 @@ def manejador(opcion):
     elif(opcion==3):
         fer = input("Do you want to go out? y/n: ")
         if(fer == 'y'):
+            dataHandler.cargar("ranking.txt")
             return False
     return True
 
