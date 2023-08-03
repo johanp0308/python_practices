@@ -1,27 +1,27 @@
 [
     {
-        "pais":"Colombia",
+        "pais":"colombia",
         "poblacion":57120000,
         "continente":"america",
         "moneda":"Pesos",
         "area":1140000
     },
     {
-        "pais":"Francia",
+        "pais":"francia",
         "poblacion":67750000,
         "continente":"europa",
         "moneda":"Euro",
         "area":551695
     },
     {
-        "pais":"Rusia",
+        "pais":"rusia",
         "poblacion":143000000,
         "continente":"asia",
         "moneda":"Rublo",
         "area":17000000
     },
     {
-        "pais":"Korea",
+        "pais":"korea",
         "poblacion":51700000,
         "continente":"asia",
         "moneda":"Won",

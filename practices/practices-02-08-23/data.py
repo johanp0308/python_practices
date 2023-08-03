@@ -12,9 +12,8 @@
 #   Imprimir continente y todos los países de cada uno
 import json
 
-dataPais = {}
-
 def descargar(file_name):
-    with open(file_name,"") as file:
+    data = []
+    with open(file_name) as file:
         data = json.load(file)
-        
+    return data

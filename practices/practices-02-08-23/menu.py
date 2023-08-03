@@ -1,9 +1,13 @@
+import pais
 def opc_main(opc):
     if(opc==1):
-            
-    elif(opc==2):    
-    elif(opc==3):    
-    elif(opc==4):    
+        pais.print_paises()
+    elif(opc==2):
+        pais.cons_pais()
+    elif(opc==3):
+        pais.top_poblacion()
+    elif(opc==4):
+        pais.area_menor()
     elif(opc==5):    
     elif(opc==6):    
 
