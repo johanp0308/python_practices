@@ -8,8 +8,10 @@ def opc_main(opc):
         pais.top_poblacion()
     elif(opc==4):
         pais.area_menor()
-    elif(opc==5):    
-    elif(opc==6):    
+    elif(opc==5):
+        pais.print_cont()
+    elif(opc==6): 
+        return False  
 
 def menu_main():
     ejec = True
@@ -26,6 +28,7 @@ def menu_main():
 6. Salir
                   """)
             opc = int(input("Ingrese una opcion validad: "))
-            ejec = opc_main(opc)
+            if(opc>0 and opc<7):
+                ejec = opc_main(opc)
         except ValueError:
             print("Valor no numerico!")

@@ -48,16 +48,27 @@ def top_poblacion():
 
 def area_menor():
     datos = descargar("paises.json")
-    pais = ""
     dici = datos[0]
     pais = dici['pais']
     menor = dici['area']
     for dic in datos:
         for i in range(0,len(datos)):
             dic = datos[i]
-            if(menor < dic['area']):
+            if(dic['area'] < menor):
                 menor = dic['area']
                 pais = dic['pais']
     print(f"El pais con menos area es: {pais} con un total de {menor} de metros cuadrados")
     
-area_menor()
+def print_cont():
+    datos = descargar("paises.json")
+    continente = input("Ingrese el contienente: ")
+    print(f"< Paises del Conitinente: {continente.capitalize()}>")
+    for dic in datos:
+        if(continente == dic['continente']):
+            print(f"""
+    ======================
+    Pais:       {dic['pais'].capitalize()}
+    Poblacion:  {dic['poblacion']}
+    Moneda:     {dic['moneda']}
+    Area:       {dic['area']}
+                  """)
