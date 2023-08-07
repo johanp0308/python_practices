@@ -1,0 +1,11 @@
+{
+    "ABC123":{
+        "visitas":[
+            {"type":"entrada","hora":"11:00"},
+            {"type":"salida","hora":"13:00"}
+        ],
+        "isPark":true,
+        "pagada":false,
+        "tarifa":10000
+    }
+}

@@ -1,0 +1,20 @@
+{
+  "14321312": {
+    "name": "Padresito",
+    "cargo": "JEfesote",
+    "telefono": "3202818201",
+    "isActive": true
+  },
+  "78494": {
+    "name": "Sebastia",
+    "cargo": "Contratista",
+    "telefono": "320212445",
+    "isActive": true
+  },
+  "61561312": {
+    "name": "Miguel",
+    "cargo": "Subjefe",
+    "telefono": "3277128745",
+    "isActive": true
+  }
+}
