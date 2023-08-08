@@ -6,6 +6,9 @@
         ],
         "isPark":true,
         "pagada":false,
-        "tarifa":10000
+        "tarifa":0
+    },
+    "ABC133":{
+        
     }
 }
